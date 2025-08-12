@@ -23,3 +23,12 @@ jobs:
 
       - name: Build React app
         run: npm run build
+
+      - name: publisg to netlify
+        uses: netlify/actions/cli@master
+        with:
+          args: deploy --dir=build --production
+        env: 
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+ 
